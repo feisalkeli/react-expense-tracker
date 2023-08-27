@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AppContext } from "../context/GlobalState";
 
 const AddTransaction = () => {
+  const { addTransaction } = useContext(AppContext);
+  console.log(addTransaction);
   // Prevent form from reloading
-  const handleSubmit = function () {
+  const handleSubmit = function (e) {
     e.preventDefault();
-    console.log(text, "text", amount, "amount");
+    const newTransaction = {
+      id: Math.floor(Math.random() * 10000000),
+      text: text,
+      amount: +amount,
+    };
+    addTransaction(newTransaction);
   };
   const [text, setText] = useState("");
   const [amount, setAmount] = useState("");
+
+  //Add Transaction
+
   return (
     <>
       <h3>Add New Transaction</h3>

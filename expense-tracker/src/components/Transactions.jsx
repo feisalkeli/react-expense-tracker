@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../context/GlobalState";
 
 const Transactions = ({ transactions }) => {
+  //delete transaction context
+  const { deleteTransaction } = useContext(AppContext);
   const sign = transactions.amount < 0 ? "-" : "+";
-  console.log(transactions, "feisal");
+
   ///Changes the border color to green or red
   const changeColorBorder = transactions.amount < 0 ? "minus" : "plus";
   return (
@@ -13,7 +16,12 @@ const Transactions = ({ transactions }) => {
           {/* Math Abs makes the Values positive */}
           {sign}${Math.abs(transactions.amount)}
         </span>
-        <button className="delete-btn">x</button>
+        <button
+          className="delete-btn"
+          onClick={() => deleteTransaction(transactions.id)}
+        >
+          x
+        </button>
       </li>
     </>
   );
