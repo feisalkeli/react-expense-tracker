@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 
-const [text, setText] = useState("");
-const [amount, setAmount] = useState("");
-
-// Prevent form from reloading
-const handleSubmit = function () {
-  e.preventDefault();
-  console.log(text, "text", amount, "amount");
-};
-
 const AddTransaction = () => {
+  // Prevent form from reloading
+  const handleSubmit = function () {
+    e.preventDefault();
+    console.log(text, "text", amount, "amount");
+  };
+  const [text, setText] = useState("");
+  const [amount, setAmount] = useState("");
   return (
     <>
       <h3>Add New Transaction</h3>
       <form id="form" onSubmit={handleSubmit}>
         <div className="form-control">
-          <label htmlForfor="text">Text</label>
+          <label htmFor="text">Text</label>
           <input
             type="text"
             value={text}
@@ -24,7 +22,7 @@ const AddTransaction = () => {
           />
         </div>
         <div className="form-control">
-          <label htmlForfor="amount">
+          <label htmlFor="amount">
             Amount <br />
             (negative - expense, positive - income)
           </label>
